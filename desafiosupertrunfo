@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    // Declaração de constantes para o número de casas que cada peça se move
+    const int CASAS_TORRE = 5;      // Torre move 5 casas para a direita
+    const int CASAS_BISPO = 5;      // Bispo move 5 casas na diagonal (cima-direita)
+    const int CASAS_RAINHA = 8;     // Rainha move 8 casas para a esquerda
+    
+    // Variáveis de controle para as estruturas de repetição
+    int contador_torre;
+    int contador_bispo = 0;
+    int contador_rainha = 0;
+    
+    printf("=== SIMULACAO DE MOVIMENTOS DAS PECAS DE XADREZ ===\n\n");
+    
+    // ========== MOVIMENTO DA TORRE ==========
+    // A Torre move-se em linha reta (horizontal ou vertical)
+    // Usando estrutura FOR para simular 5 movimentos para a direita
+    printf("TORRE - Movendo 5 casas para a direita:\n");
+    
+    for (contador_torre = 1; contador_torre <= CASAS_TORRE; contador_torre++) {
+        printf("Direita\n");
+    }
+    
+    printf("\n"); // Linha em branco para separar as seções
+    
+    // ========== MOVIMENTO DO BISPO ==========
+    // O Bispo move-se na diagonal
+    // Usando estrutura WHILE para simular 5 movimentos na diagonal (cima-direita)
+    printf("BISPO - Movendo 5 casas na diagonal (cima-direita):\n");
+    
+    while (contador_bispo < CASAS_BISPO) {
+        printf("Cima, Direita\n");
+        contador_bispo++; // Incrementa o contador
+    }
+    
+    printf("\n"); // Linha em branco para separar as seções
+    
+    // ========== MOVIMENTO DA RAINHA ==========
+    // A Rainha move-se em todas as direções
+    // Usando estrutura DO-WHILE para simular 8 movimentos para a esquerda
+    printf("RAINHA - Movendo 8 casas para a esquerda:\n");
+    
+    do {
+        printf("Esquerda\n");
+        contador_rainha++; // Incrementa o contador
+    } while (contador_rainha < CASAS_RAINHA);
+    
+    printf("\n=== FIM DA SIMULACAO ===\n");
+    
+    return 0; // Retorna 0 indicando execução bem-sucedida
