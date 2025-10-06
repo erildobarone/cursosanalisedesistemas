@@ -1,1 +1,263 @@
 
+/*
+ * Programa: Movimentos Complexos de Peças de Xadrez
+ * Descrição: Implementação avançada com recursividade e loops complexos
+ * Autor: [Seu Nome]
+ * Data: 06/10/2025
+ */
+
+#include <stdio.h>
+
+// ============================================================================
+// CONSTANTES DE CONFIGURAÇÃO
+// ============================================================================
+
+// Número de casas para cada peça
+#define CASAS_TORRE 5
+#define CASAS_BISPO 4
+#define CASAS_RAINHA 3
+#define MOVIMENTOS_CAVALO 3  // Número de movimentos em "L" do cavalo
+
+// ============================================================================
+// FUNÇÕES RECURSIVAS PARA A TORRE
+// ============================================================================
+
+/*
+ * Função: moverTorreDireita
+ * Descrição: Move a torre recursivamente para a direita
+ * Parâmetros: casas - número de casas restantes para mover
+ */
+void moverTorreDireita(int casas) {
+    // Caso base: se não há mais casas, retorna
+    if (casas <= 0) {
+        return;
+    }
+    
+    // Imprime a direção do movimento
+    printf("Direita\n");
+    
+    // Chamada recursiva com uma casa a menos
+    moverTorreDireita(casas - 1);
+}
+
+/*
+ * Função: moverTorreCima
+ * Descrição: Move a torre recursivamente para cima
+ * Parâmetros: casas - número de casas restantes para mover
+ */
+void moverTorreCima(int casas) {
+    if (casas <= 0) {
+        return;
+    }
+    
+    printf("Cima\n");
+    moverTorreCima(casas - 1);
+}
+
+/*
+ * Função: moverTorreEsquerda
+ * Descrição: Move a torre recursivamente para a esquerda
+ * Parâmetros: casas - número de casas restantes para mover
+ */
+void moverTorreEsquerda(int casas) {
+    if (casas <= 0) {
+        return;
+    }
+    
+    printf("Esquerda\n");
+    moverTorreEsquerda(casas - 1);
+}
+
+/*
+ * Função: moverTorreBaixo
+ * Descrição: Move a torre recursivamente para baixo
+ * Parâmetros: casas - número de casas restantes para mover
+ */
+void moverTorreBaixo(int casas) {
+    if (casas <= 0) {
+        return;
+    }
+    
+    printf("Baixo\n");
+    moverTorreBaixo(casas - 1);
+}
+
+// ============================================================================
+// FUNÇÕES RECURSIVAS PARA O BISPO
+// ============================================================================
+
+/*
+ * Função: moverBispoDiagonalRecursivo
+ * Descrição: Move o bispo recursivamente em diagonal (cima-direita)
+ * Parâmetros: casas - número de casas restantes para mover
+ */
+void moverBispoDiagonalRecursivo(int casas) {
+    // Caso base: se não há mais casas, retorna
+    if (casas <= 0) {
+        return;
+    }
+    
+    // Movimento diagonal = cima + direita
+    printf("Cima\n");
+    printf("Direita\n");
+    
+    // Chamada recursiva com uma casa a menos
+    moverBispoDiagonalRecursivo(casas - 1);
+}
+
+/*
+ * Função: moverBispoLoopsAninhados
+ * Descrição: Move o bispo usando loops aninhados (vertical externo, horizontal interno)
+ * Parâmetros: casas - número de casas para mover em diagonal
+ */
+void moverBispoLoopsAninhados(int casas) {
+    int vertical, horizontal;
+    
+    // Loop externo: controla o movimento vertical
+    for (vertical = 0; vertical < casas; vertical++) {
+        // Primeiro imprime o movimento vertical (para cima)
+        printf("Cima\n");
+        
+        // Loop interno: controla o movimento horizontal
+        for (horizontal = 0; horizontal < 1; horizontal++) {
+            // Imprime o movimento horizontal (para a direita)
+            printf("Direita\n");
+        }
+    }
+}
+
+// ============================================================================
+// FUNÇÕES RECURSIVAS PARA A RAINHA
+// ============================================================================
+
+/*
+ * Função: moverRainhaRecursivo
+ * Descrição: Move a rainha recursivamente (combina movimento de torre e bispo)
+ * Parâmetros: casas - número de casas restantes para mover
+ * Nota: Simula um movimento diagonal (cima-direita)
+ */
+void moverRainhaRecursivo(int casas) {
+    // Caso base: se não há mais casas, retorna
+    if (casas <= 0) {
+        return;
+    }
+    
+    // A rainha pode se mover como torre ou bispo
+    // Neste exemplo, movemos diagonalmente (cima-direita)
+    printf("Cima\n");
+    printf("Direita\n");
+    
+    // Chamada recursiva com uma casa a menos
+    moverRainhaRecursivo(casas - 1);
+}
+
+// ============================================================================
+// FUNÇÃO COM LOOPS COMPLEXOS PARA O CAVALO
+// ============================================================================
+
+/*
+ * Função: moverCavaloComplexo
+ * Descrição: Move o cavalo em "L" usando loops aninhados complexos
+ * Movimento: 2 casas para cima, 1 casa para a direita
+ * Parâmetros: movimentos - número de vezes que o cavalo faz o movimento em "L"
+ */
+void moverCavaloComplexo(int movimentos) {
+    int i, j;
+    int casasVerticais = 2;    // Casas para cima no movimento em "L"
+    int casasHorizontais = 1;   // Casas para a direita no movimento em "L"
+    
+    // Loop externo: controla quantos movimentos em "L" serão feitos
+    for (i = 0; i < movimentos; i++) {
+        int passoVertical = 0;
+        int passoHorizontal = 0;
+        
+        // Loop interno complexo: simula o movimento em "L"
+        for (j = 0; j < (casasVerticais + casasHorizontais); j++) {
+            
+            // Primeira parte do "L": mover verticalmente (2 casas para cima)
+            if (passoVertical < casasVerticais) {
+                printf("Cima\n");
+                passoVertical++;
+                continue;  // Continua para o próximo passo sem executar o código abaixo
+            }
+            
+            // Segunda parte do "L": mover horizontalmente (1 casa para a direita)
+            if (passoHorizontal < casasHorizontais) {
+                printf("Direita\n");
+                passoHorizontal++;
+                
+                // Se completou o movimento horizontal, sai do loop interno
+                if (passoHorizontal >= casasHorizontais) {
+                    break;  // Finaliza o movimento em "L" atual
+                }
+            }
+        }
+        
+        // Linha em branco entre movimentos em "L" (opcional, para clareza visual)
+        if (i < movimentos - 1) {
+            // Não adiciona linha em branco após o último movimento
+        }
+    }
+}
+
+// ============================================================================
+// FUNÇÃO PRINCIPAL
+// ============================================================================
+
+int main() {
+    printf("=== SIMULADOR DE MOVIMENTOS DE PECAS DE XADREZ ===\n\n");
+    
+    // ========================================================================
+    // TORRE - Movimento Recursivo
+    // ========================================================================
+    printf("Torre:\n");
+    
+    // A torre se move em linha reta (horizontal ou vertical)
+    // Exemplo: movendo para a direita
+    moverTorreDireita(CASAS_TORRE);
+    
+    printf("\n");  // Linha em branco para separar as peças
+    
+    // ========================================================================
+    // BISPO - Movimento Recursivo
+    // ========================================================================
+    printf("Bispo (Recursivo):\n");
+    
+    // O bispo se move em diagonal
+    moverBispoDiagonalRecursivo(CASAS_BISPO);
+    
+    printf("\n");  // Linha em branco para separar as peças
+    
+    // ========================================================================
+    // BISPO - Movimento com Loops Aninhados
+    // ========================================================================
+    printf("Bispo (Loops Aninhados):\n");
+    
+    // O bispo se move em diagonal usando loops aninhados
+    moverBispoLoopsAninhados(CASAS_BISPO);
+    
+    printf("\n");  // Linha em branco para separar as peças
+    
+    // ========================================================================
+    // RAINHA - Movimento Recursivo
+    // ========================================================================
+    printf("Rainha:\n");
+    
+    // A rainha pode se mover como torre ou bispo
+    // Neste exemplo, movemos diagonalmente
+    moverRainhaRecursivo(CASAS_RAINHA);
+    
+    printf("\n");  // Linha em branco para separar as peças
+    
+    // ========================================================================
+    // CAVALO - Movimento com Loops Complexos
+    // ========================================================================
+    printf("Cavalo:\n");
+    
+    // O cavalo se move em "L" (2 para cima, 1 para a direita)
+    moverCavaloComplexo(MOVIMENTOS_CAVALO);
+    
+    printf("\n");  // Linha em branco final
+    
+    return 0;
+}
